@@ -26,8 +26,32 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <h3>Navbar Placeholder</h3>
-    <hr>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'store' %}">Store</a>
+                    </li>
+
+                </ul>
+               
+            </div>
+            <div class="form-inline my-2 my-lg-0">
+                <a href="#" class="btn btn-warning">Login</a>
+                <a href="{% url 'cart' %}">
+                    <img src="{% static 'images/cart.png' %}" id="cart-icon">
+                </a>
+                <p id="cart-total">0</p>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <br>
         {% block content %}
