@@ -3,6 +3,26 @@
 
 <head>
     <title>Ecom</title>
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+    </script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
@@ -26,7 +46,6 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 
-    <script type="text/javascript" src= "{% static 'js/cart.js' %}"></script>
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
         <div class="container-fluid">
@@ -43,7 +62,7 @@
                     </li>
 
                 </ul>
-               
+
             </div>
             <div class="form-inline my-2 my-lg-0">
                 <a href="#" class="btn btn-warning">Login</a>
@@ -60,6 +79,8 @@
 
         {% endblock content %}
     </div>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+
 </body>
 
 </html>
