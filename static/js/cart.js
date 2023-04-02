@@ -16,7 +16,7 @@ for (var i = 0; i < updateBtns.length; i++) {
 
 }
 
-function updateUserOrder(productID, action) {
+function updateUserOrder(productId, action) {
     console.log('User is logged in, sending data..');
 
     var url = '/update_item/'
@@ -28,7 +28,7 @@ function updateUserOrder(productID, action) {
             'X-CSRFToken': csrftoken,
         },
         body: JSON.stringify({
-            'productId': productID,
+            'productId': productId,
             'action': action
         })
     })
@@ -38,6 +38,7 @@ function updateUserOrder(productID, action) {
 
     .then((data) => {
         console.log('data: ',data)
+        location.reload()
     })
 
 }
